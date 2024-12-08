@@ -85,9 +85,16 @@ Inner JOin
 >>>>> Filters out rows with no match
 */
 
-select employees.id as 'Employee Id', employees.name , department_name
+select employees.id as 'Employee Id',department_table.id as "Department ID ", employees.name , department_name
 from  employees
 inner join department_table on employees.department_id = department_table.id;
+
+
+/*
+Left Join (left outer join)
+>>> Returns all rows from the left table and the matched rows from the right table
+>>> If there is no match is the right table, NUll values are returned
+*/
 
 
 
