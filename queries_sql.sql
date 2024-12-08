@@ -40,6 +40,12 @@ group by gender,name
 having count(*) >0;
 
 
+/*
+Give the resulting tables arising from applying joins on the folowing tables in SQL
+*/
+
+
+
 create table employees(
 id int,
 name varchar(255),
@@ -61,6 +67,27 @@ CREATE TABLE department_table (
     id INT PRIMARY KEY,
     department_name VARCHAR(100)
 );
+
+INSERT INTO department_table (id, department_name)
+VALUES
+    (101, 'Human Resources'),
+    (102, 'Finance'),
+    (103, 'Engineering'),
+    (104, 'Marketing'),
+    (105, 'Sales');
+    
+select * from employees;
+select * from department_table;
+
+/*
+Inner JOin
+>>>>> Returns only the rows with matching vlues in both talbe
+>>>>> Filters out rows with no match
+*/
+
+select employees.id as 'Employee Id', employees.name , department_name
+from  employees
+inner join department_table on employees.department_id = department_table.id;
 
 
 
