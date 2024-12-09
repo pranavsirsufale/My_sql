@@ -216,6 +216,11 @@ left join departments on employee.department_id = departments.department_id
 group by employee.department_id
 having count(employee.department_id) >2;
 
+# Q9. Write a procedure to insert a new employee into the employees table and then call the procedure.
+
+
+
+
 
 # Q10. Create a view that displays the employees' names, their department names, and their salaries.
 select * from employee;
