@@ -334,8 +334,45 @@ show columns from employee;
 
 
 
+# Q12. Create a trigger that logs any changes to the salary of employees into a separate table salary_changes.
+
+select * from employee;
 
 
+#############################
+
+create table salary_changes (
+    change_id int auto_increment primary key,
+    emp_id int not null,
+    old_salary decimal(10, 2),
+    new_salary decimal(10, 2),
+    change_time timestamp default current_timestamp,
+    changed_by_user varchar(100)
+);
+
+select * from salary_changes;
+
+delimiter //
+create trigger log_salary_changes
+after update on employee
+for each row
+begin
+    if old.salary <> new.salary then
+        insert into salary_changes (emp_id, old_salary, new_salary)
+        values (old.emp_id, old.salary, new.salary);
+    end if;
+end//
+delimiter ;
+
+show triggers like 'log_salary_changes';
+
+update employee 
+set salary = 600 
+where emp_id = 20;
+
+select * from salary_changes;
+
+select * from employee;
 
 
 
