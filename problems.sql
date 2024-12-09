@@ -181,6 +181,23 @@ left join departments on employee.department_id = departments.department_id
 group by employee.department_id ;
 
 
+/*
+101	Human Resources	26500.00	4	6625.00
+102	Finance	28400.00	4	7100.00
+103	Engineering	26300.00	4	6575.00
+104	Marketing	28100.00	4	7025.00
+105	Sales	25800.00	4	6450.00
+*/
+
+
+
+# Q6. Find the average salary of employees in each department.
+
+select employee.department_id as 'Department ID', department_name as 'Department Name' , sum(salary)  as 'Salary of Departments',count(employee.department_id) as 'Employees in each Department' , round((sum(salary) / count(employee.department_id) ),2) as 'Average salary of employees in each department'
+from employee
+left join departments on employee.department_id = departments.department_id
+group by employee.department_id;
+
 
 
 
