@@ -210,6 +210,18 @@ group by employee.department_id;
 
 #Q8. Retrieve departments with more than 2 employees.
 
+select employee.department_id as 'Employee ID', department_name as 'Department Name', count(employee.department_id)  as 'Employees in each Departhment'
+from employee 
+left join departments on employee.department_id = departments.department_id
+group by employee.department_id
+having count(employee.department_id) > 3;
+
+
+
+
+
+
+
 
 
 
