@@ -142,9 +142,12 @@ from employee
 inner join projects on employee.emp_id = projects.emp_id;
 
 
-# Q3 
+#Q3. Retrieve all projects and the employees working on them, even if some projects have no assigned employees.
 
+delete from projects
+where emp_id between 11 and 20;
 
+select * from projects;
 
 
 
