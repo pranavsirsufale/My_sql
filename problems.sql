@@ -246,6 +246,8 @@ delimiter ;
 
 
 
+
+
 select * from employee;
 select * from departments;
 
@@ -260,7 +262,34 @@ If NEW.salary IS NULL, the trigger sets it to 5000.
 */
 
 
-        
+delimiter //
+
+create trigger set_default_salary
+before insert on employee
+for each row
+begin
+    -- Check if the salary is NULL and set it to 5000
+    if new.salary is null then
+        set new.salary = 5000;
+    end if;
+end;
+
+delimiter ;
+
+-- Insert records
+insert into employee (emp_id, name, department_id, salary)
+values
+    (21, 'Pooja Waykar', 104, 50000),
+    (22, 'Pranav Sirsufale', 104, 50000),
+    (23, 'Nick Jones', 105, null); -- This should be set to 5000
+
+
+show triggers like 'employee';
+
+
+	
+    
+
 delete from employee 
 where emp_id between 21 and 23;
 
@@ -268,6 +297,10 @@ where emp_id between 21 and 23;
 
 
 select * from employee;
+
+
+show columns from employee;
+
 
 
 
