@@ -131,6 +131,24 @@ from employee
 inner join departments on employee.department_id = departments.department_id;
 
 
+
+# Q2. List all employees and their projects, including employees without any projects.
+select * from employee;
+select * from departments;
+select * from projects;
+
+select name,project_name 
+from employee
+inner join projects on employee.emp_id = projects.emp_id;
+
+
+# Q3 
+
+
+
+
+
+
 /*
 
 */
