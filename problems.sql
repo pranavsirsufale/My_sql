@@ -220,9 +220,56 @@ having count(employee.department_id) >2;
 # Q10. Create a view that displays the employees' names, their department names, and their salaries.
 select * from employee;
 
-select emp_id,name,department_name , salary
+select emp_id as 'Employee Id',name as 'Name' ,department_name as 'Department Name' , salary as 'Salary'
 from employee
 left join departments on employee.department_id = departments.department_id;
+
+
+# Q11. Create a trigger that automatically sets the salary field to a default value of 5000 
+# if it is not provided during an insert operation into the employees table.
+
+insert into employee (emp_id, name, department_id, salary)
+values (21,'Pooja Waykar',104,50000),
+		(22,'Pranav Sirsufale',104,50000),
+        (23,'Nick Jones',105,null);
+        
+delimiter //
+create trigger set_default_salary
+before insert on employee
+for each row
+begin
+    if new.salary is null then
+        set new.salary = 5000;
+    end if;
+end;
+delimiter ;
+
+
+
+select * from employee;
+select * from departments;
+
+/*
+BEFORE INSERT:
+Ensures the trigger runs before an insert operation on the employee table.
+FOR EACH ROW:
+Applies the trigger logic to each row being inserted.
+NEW.salary:
+Refers to the value of the salary field being inserted.
+If NEW.salary IS NULL, the trigger sets it to 5000.
+*/
+
+
+        
+delete from employee 
+where emp_id between 21 and 23;
+
+
+
+
+select * from employee;
+
+
 
 
 
