@@ -175,7 +175,7 @@ select * from employee;
 select * from departments;
 select * from projects;
 
-select employee.department_id as 'Department ID',department_name as 'Department Name', sum(salary) as 'Department Wise Salary Distribution',count(emp_id) as 'No of Employees'
+select employee.department_id as 'Department ID',department_name as 'Department Name', sum(salary) as 'Department Wise Salary Distribution',count(emp_id) as 'No of Employees' , round((sum(salary) / count(emp_id)),2) as 'department wise average salary of employees ' 
 from employee
 left join departments on employee.department_id = departments.department_id
 group by employee.department_id ;
