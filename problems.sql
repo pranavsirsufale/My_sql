@@ -170,6 +170,16 @@ on employee.emp_id = projects.emp_id;
 */
 
 
+#  Q5. Find the total salary of employees in each department.
+select * from employee;
+select * from departments;
+select * from projects;
+
+select employee.department_id as 'Department ID',department_name as 'Department Name', sum(salary) as 'Department Wise Salary Distribution',count(emp_id) as 'No of Employees'
+from employee
+left join departments on employee.department_id = departments.department_id
+group by employee.department_id ;
+
 
 
 
