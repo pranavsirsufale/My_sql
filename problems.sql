@@ -214,7 +214,7 @@ select employee.department_id as 'Employee ID', department_name as 'Department N
 from employee 
 left join departments on employee.department_id = departments.department_id
 group by employee.department_id
-having count(employee.department_id) > 3;
+having count(employee.department_id) >2;
 
 
 
