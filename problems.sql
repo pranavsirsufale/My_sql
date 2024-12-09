@@ -217,6 +217,18 @@ group by employee.department_id
 having count(employee.department_id) >2;
 
 
+# Q10. Create a view that displays the employees' names, their department names, and their salaries.
+select * from employee;
+
+select emp_id,name,department_name , salary
+from employee
+left join departments on employee.department_id = departments.department_id;
+
+
+
+
+
+
 
 
 
