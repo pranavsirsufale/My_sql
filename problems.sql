@@ -200,6 +200,23 @@ group by employee.department_id;
 
 
 
+# Q7. Find the number of employees in each department.
+
+select employee.department_id as 'Department ID', department_name as 'Department Name' , count(department_name) as 'Employees in each Department'
+from employee
+left join departments on employee.department_id = departments.department_id
+group by employee.department_id;
+
+
+#Q8. Retrieve departments with more than 2 employees.
+
+
+
+
+ 
+
+
+
 
 
 
