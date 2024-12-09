@@ -144,10 +144,18 @@ inner join projects on employee.emp_id = projects.emp_id;
 
 #Q3. Retrieve all projects and the employees working on them, even if some projects have no assigned employees.
 
+# to delete rows from emp_id 11 to 20 to solve the above question
 delete from projects
 where emp_id between 11 and 20;
 
 select * from projects;
+
+
+
+
+
+
+
 
 
 
