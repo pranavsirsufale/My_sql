@@ -157,17 +157,19 @@ select * from projects;
 # Q4. List all employees and all projects, even if there is no match between them.
 select name,project_name from  (departments,employee,projects);
 
-SELECT employee.emp_id,name AS employee_name,project_id,project_name
-FROM employee
-LEFT JOIN projects ON employee.emp_id = projects.emp_id;
+select employee.emp_id,name as employee_name,project_id,project_name
+from employee
+left join projects on employee.emp_id = projects.emp_id;
 
 /*
-UNION
-SELECT employee.emp_id,employee.name AS employee_name,projects.project_id,projects.project_name
-FROM projects
-LEFT JOIN employee
-ON employee.emp_id = projects.emp_id;
+union
+select employee.emp_id,employee.name as employee_name,projects.project_id,projects.project_name
+from projects
+left join employee
+on employee.emp_id = projects.emp_id;
 */
+
+
 
 
 
