@@ -148,6 +148,10 @@ inner join projects on employee.emp_id = projects.emp_id;
 delete from projects
 where emp_id between 11 and 20;
 
+select employee.emp_id as 'Employee ID', name as 'Employee name',project_name as 'Assigned Projects'   
+from employee 
+left join projects on employee.emp_id = projects.emp_id;
+
 select * from projects;
 
 
