@@ -228,6 +228,8 @@ left join departments on employee.department_id = departments.department_id;
 # Q11. Create a trigger that automatically sets the salary field to a default value of 5000 
 # if it is not provided during an insert operation into the employees table.
 
+/*
+
 insert into employee (emp_id, name, department_id, salary)
 values (21,'Pooja Waykar',104,50000),
 		(22,'Pranav Sirsufale',104,50000),
@@ -262,28 +264,12 @@ If NEW.salary IS NULL, the trigger sets it to 5000.
 */
 
 
-delimiter //
-
-create trigger set_default_salary
-before insert on employee
-for each row
-begin
-    -- Check if the salary is NULL and set it to 5000
-    if new.salary is null then
-        set new.salary = 5000;
-    end if;
-end;
-
-delimiter ;
-
--- Insert records
-insert into employee (emp_id, name, department_id, salary)
-values
-    (21, 'Pooja Waykar', 104, 50000),
-    (22, 'Pranav Sirsufale', 104, 50000),
-    (23, 'Nick Jones', 105, null); -- This should be set to 5000
 
 
+
+
+
+/*
 show triggers like 'employee';
 
 
@@ -293,6 +279,49 @@ show triggers like 'employee';
 delete from employee 
 where emp_id between 21 and 23;
 
+CREATE TABLE trigger_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    log_message VARCHAR(255),
+    log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+select * from  trigger_log;
+
+DELIMITER //
+CREATE TRIGGER set_default_salary
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    IF NEW.salary IS NULL THEN
+        SET NEW.salary = 5000;
+    END IF;
+    
+END
+
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER set_default_salary
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    IF NEW.salary IS NULL THEN
+        SET NEW.salary = 5000;
+    END IF;
+    INSERT INTO trigger_log (log_message) 
+    VALUES (CONCAT('Trigger fired for employee ID: ', NEW.emp_id));
+END;
+DELIMITER ;
+
+
+insert into employee (emp_id, name, department_id, salary)
+values
+    (21, 'Pooja Waykar', 104, 50000),
+    (22, 'Pranav Sirsufale', 104, 50000),
+    (23, 'Nick Jones', 105, null); 
+    
+show triggers like 'set_default_salary';
 
 
 
@@ -301,6 +330,7 @@ select * from employee;
 
 show columns from employee;
 
+*/
 
 
 
