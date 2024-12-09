@@ -114,6 +114,30 @@ VALUES
 
 select * from projects;
 
+/*
+project_id: A unique identifier for each project.
+project_name: Name of the project.
+emp_id: Links the project to an employee (emp_id from the employee table).
+The FOREIGN KEY constraint ensures referential integrity between the projects table and the employee table. If an emp_id does not exist in the employee table, the record cannot be added to the projects table.
+
+*/
+
+# Q1. Retrieve all employee names and their respective department names.
+select * from employee;
+select * from departments;
+
+select emp_id as 'Employee ID', employee.department_id as 'Department ID',name as 'Employee name '  , department_name as 'Department Name' 
+from employee
+inner join departments on employee.department_id = departments.department_id;
+
+
+/*
+
+*/
+
+/*
+
+*/
 
 /*
 
