@@ -53,6 +53,10 @@ text(200))
 
 
 
+create table test_scores(test_no varchar(20), foreign key(test_no)
+references tests(test_no), CourseID int(4), foreign key(CourseId)
+references Courses(CourseId), studentID int(4), foreign key(studentID)
+references Students(studentID), Score float)
 
 
 
