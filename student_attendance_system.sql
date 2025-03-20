@@ -47,7 +47,13 @@ int(4) , foreign key(StudentID) references Students(StudentID)
 
 
 create table tests(test_no varchar(20) primary key, CourseID 
-int(4), foreign key(CoureseID) references courses(CourseID), 
+int(4), foreign key(CourseID) references courses(CourseID), 
 test_date date , test_time time , test_type varchar(20), remark
 text(200))
+
+
+
+
+
+
 
